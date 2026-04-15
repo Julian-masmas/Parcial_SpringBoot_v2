@@ -1,5 +1,6 @@
 package com.example.examen1_2.controller;
 
+import jakarta.validation.Valid;
 import com.example.examen1_2.dto.EmpleadoRequest;
 import com.example.examen1_2.dto.EmpleadoResponse;
 import com.example.examen1_2.service.EmpleadoService;
@@ -24,7 +25,7 @@ public class EmpleadoController {
     }
 
     @PostMapping
-    public ResponseEntity<EmpleadoResponse> crearEmpleado(@RequestBody EmpleadoRequest empleadoRequest) {
+     public ResponseEntity<EmpleadoResponse> crearEmpleado(@Valid @RequestBody EmpleadoRequest empleadoRequest) {
         EmpleadoResponse empleadoResponse = empleadoService.crearEmpleado(empleadoRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(empleadoResponse);
     }
